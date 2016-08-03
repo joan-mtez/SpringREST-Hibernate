@@ -5,7 +5,7 @@ import java.util.List;
 import com.journaldev.spring.model.Stock;
 
 
-public interface StockDAO {
+public interface IStockDAO {
 
 	public void addStock(Stock stock);
 	public void updateStock(Stock stock);

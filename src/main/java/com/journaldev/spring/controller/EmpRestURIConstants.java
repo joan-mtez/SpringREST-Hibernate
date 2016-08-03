@@ -11,6 +11,6 @@ public class EmpRestURIConstants {
 	public static final String GET_ALL_PERSONS = "/rest/persons";
 	public static final String DELETE_PERSON = "/rest/person/delete/{id}";
 	public static final String GET_PERSON= "/rest/person/{id}";
-
-
+	public static final String GET_ALL_STOCKS = "/rest/stocks";
+	public static final String GET_ALL_CATEGORIES = "rest/categories";
 }

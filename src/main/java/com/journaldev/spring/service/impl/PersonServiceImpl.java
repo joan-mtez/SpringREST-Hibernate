@@ -7,18 +7,18 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.journaldev.spring.dao.PersonDAO;
+import com.journaldev.spring.dao.IPersonDAO;
 import com.journaldev.spring.model.Person;
-import com.journaldev.spring.service.PersonService;
+import com.journaldev.spring.service.IPersonService;
 
 
 @Service
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements IPersonService {
 	
 	@Autowired
-	private PersonDAO personDAO;
+	private IPersonDAO personDAO;
 
-	public void setPersonDAO(PersonDAO personDAO) {
+	public void setPersonDAO(IPersonDAO personDAO) {
 		this.personDAO = personDAO;
 	}
 

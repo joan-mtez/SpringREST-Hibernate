@@ -10,12 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.journaldev.spring.dao.CategoryDAO;
+import com.journaldev.spring.dao.ICategoryDAO;
 import com.journaldev.spring.model.Category;
-import com.journaldev.spring.model.Person;
 
 @Repository
-public class CategoryDAOImpl implements CategoryDAO {
+public class CategoryDAOImpl implements ICategoryDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(CategoryDAOImpl.class);
 	
@@ -68,8 +67,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public void removeCategory(int id) {
-		// TODO Auto-generated method stub
-		
+		Session session = this.sessionFactory.getCurrentSession();
+		Category category = (Category) session.load(Category.class, new Integer(id));
+		if(null != category){
+			session.delete(category);
+		}
+		logger.info("Category deleted successfully, Category details="+category.toString());
 	}
 
 }

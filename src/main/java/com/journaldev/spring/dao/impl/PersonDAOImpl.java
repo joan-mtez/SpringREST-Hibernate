@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.journaldev.spring.dao.PersonDAO;
+import com.journaldev.spring.dao.IPersonDAO;
 import com.journaldev.spring.model.Person;
 
 
 @Repository
-public class PersonDAOImpl implements PersonDAO{
+public class PersonDAOImpl implements IPersonDAO{
 	
 	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 	

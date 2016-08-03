@@ -73,6 +73,6 @@ public class Category implements java.io.Serializable{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Description: " + this.desc +" Name: "+this.name +" Quantity of Stocks Associated: "+this.getStocks().size();
+		return "Category Description: " + this.desc +" Name: "+this.name +" Quantity of Stocks Associated: "+this.getStocks().size();
 	}
 }

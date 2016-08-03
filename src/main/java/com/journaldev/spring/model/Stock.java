@@ -84,4 +84,10 @@ public class Stock implements java.io.Serializable {
 		this.stockName = stockName;
 		this.categories = categories;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Stock Description: " + this.stockCode +" Name: "+this.stockName +" Quantity of Categories Associated: "+this.getCategories().size();
+	}
 }

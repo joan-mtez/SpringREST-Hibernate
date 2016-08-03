@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.journaldev.spring.model.Category;
 
-public interface CategoryDAO {
+public interface ICategoryDAO {
 
 	public void addCategory(Category category);
 	public void updateCategory(Category category);

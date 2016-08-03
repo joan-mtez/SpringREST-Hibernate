@@ -18,9 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.journaldev.spring.model.Category;
 import com.journaldev.spring.model.Employee;
 import com.journaldev.spring.model.Person;
-import com.journaldev.spring.service.PersonService;
+import com.journaldev.spring.model.Stock;
+import com.journaldev.spring.service.ICategoryService;
+import com.journaldev.spring.service.IPersonService;
+import com.journaldev.spring.service.IStockService;
 
 /**
  * Handles requests for the Employee service.
@@ -32,10 +36,20 @@ public class EmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired(required=true)
-	private PersonService personService;
+	private IPersonService personService;
 	
-	public void setPersonService(PersonService ps){
+	@Autowired(required=true)
+	private IStockService stockService;
+	
+	public void setPersonService(IPersonService ps){
 		this.personService = ps;
+	}
+	
+	@Autowired(required=true)
+	private ICategoryService categoryService;
+	
+	public void setCategoryService(ICategoryService ps){
+		this.categoryService = ps;
 	}
 	
 	//Map to store employees, ideally we should use database
@@ -94,6 +108,32 @@ public class EmployeeController {
 		}
 		return persons;
 	}
+	
+	
+	@RequestMapping(value = EmpRestURIConstants.GET_ALL_STOCKS, method = RequestMethod.GET)
+	public @ResponseBody List<Stock> getAllStocks() {
+		logger.info("Start getting all Persons from DB");
+		List<Stock> stocks = new ArrayList<Stock>();
+		try {
+			stocks.addAll(stockService.listStock());
+		}catch(Exception e){
+			logger.error("Error loading persons from DB.",e);
+		}
+		return stocks;
+	}
+	
+	@RequestMapping(value = EmpRestURIConstants.GET_ALL_CATEGORIES, method = RequestMethod.GET)
+	public @ResponseBody List<Category> getAllCategories() {
+		logger.info("Start getting all Persons from DB");
+		List<Category> categories = new ArrayList<Category>();
+		try {
+			categories.addAll(categoryService.listCategory());
+		}catch(Exception e){
+			logger.error("Error loading persons from DB.",e);
+		}
+		return categories;
+	}
+	
 	
 	/*
 	@RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
