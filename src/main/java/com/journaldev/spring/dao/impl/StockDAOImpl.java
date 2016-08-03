@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.journaldev.spring.dao.IStockDAO;
-import com.journaldev.spring.model.Category;
 import com.journaldev.spring.model.Stock;
 
 @Repository

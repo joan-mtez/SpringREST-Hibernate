@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * Entity bean with JPA annotations
  * Hibernate provides JPA implementation
@@ -29,15 +27,12 @@ public class Person implements Serializable{
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonProperty
 	private int id;
 	
 	@Column(name="name")
-	@JsonProperty
 	private String name;
 	
 	@Column(name="country")
-	@JsonProperty
 	private String country;
 
 	public int getId() {
@@ -64,7 +59,7 @@ public class Person implements Serializable{
 		this.country = country;
 	}
 	
-	/*@Override
+	@Override
 	public String toString(){
 		return "id="+id+", name="+name+", country="+country;
 	}
@@ -78,5 +73,5 @@ public class Person implements Serializable{
 
 	public Person() {
 		super();
-	}*/
+	}
 }
