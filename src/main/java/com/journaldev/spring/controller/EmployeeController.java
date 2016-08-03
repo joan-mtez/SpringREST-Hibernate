@@ -74,31 +74,6 @@ public class EmployeeController {
 		return emps;
 	}
 	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_STOCKS, method = RequestMethod.GET)
-	public @ResponseBody List<Stock> getAllStocks() {
-		logger.info("Start getting all Persons from DB");
-		List<Stock> stocks = new ArrayList<Stock>();
-		try {
-			stocks.addAll(stockService.listStock());
-		}catch(Exception e){
-			logger.error("Error loading persons from DB.",e);
-		}
-		return stocks;
-	}
-	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_CATEGORIES, method = RequestMethod.GET)
-	public @ResponseBody List<Category> getAllCategories() {
-		logger.info("Start getting all Persons from DB");
-		List<Category> categories = new ArrayList<Category>();
-		try {
-			categories.addAll(categoryService.listCategory());
-		}catch(Exception e){
-			logger.error("Error loading persons from DB.",e);
-		}
-		return categories;
-	}
-	
-	
 	/*
 	@RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
 	public @ResponseBody Employee getEmployee(@PathVariable("id") int empId) {
