@@ -57,14 +57,14 @@ public class PersonController {
 	@RequestMapping(value = PersonRestURIConstants.GET_PERSON, method= RequestMethod.GET)
 	public @ResponseBody Person getPerson(@PathVariable("id") int personId){
 		logger.info("Getting persons with ID: "+personId);
-		Person person = new Person();
 		try{
-			person = personService.getPersonById(personId);
+			Person person = personService.getPersonById(personId);
 			logger.info("Person with ID "+person.getName());
+			return person;
 		}catch(Exception e){
 			logger.error("Person with ID "+personId+" not found.",e);
 		}
-		return person;
+		return null;
 	}
 	
 	@RequestMapping(value = PersonRestURIConstants.DELETE_PERSON, method = RequestMethod.PUT)

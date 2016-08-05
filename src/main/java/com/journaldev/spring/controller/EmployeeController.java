@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.journaldev.spring.dao.IEmployeeDAO;
 import com.journaldev.spring.model.Category;
 import com.journaldev.spring.model.Employee;
+import com.journaldev.spring.model.EmployeePerDept;
 import com.journaldev.spring.model.Stock;
 import com.journaldev.spring.service.ICategoryService;
+import com.journaldev.spring.service.IEmployeePerDeptService;
 import com.journaldev.spring.service.IStockService;
 
 /**
@@ -33,13 +36,10 @@ public class EmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired(required=true)
-	private IStockService stockService;
+	private IEmployeePerDeptService employeeService;
 	
-	@Autowired(required=true)
-	private ICategoryService categoryService;
-	
-	public void setCategoryService(ICategoryService ps){
-		this.categoryService = ps;
+	public void setCategoryService(IEmployeePerDeptService employeeService){
+		this.employeeService = employeeService;
 	}
 	
 	//Map to store employees, ideally we should use database
@@ -73,6 +73,14 @@ public class EmployeeController {
 		}
 		return emps;
 	}
+	
+	@RequestMapping(value = EmpRestURIConstants.LIST_EMP_DEPT, method = RequestMethod.GET)
+	public @ResponseBody List<EmployeePerDept> getAllEmployeesPerDpt() {
+		logger.info("Start getAllEmployeesPerDpt.");
+		List<EmployeePerDept> employessPerDpt = employeeService.getEmployeesPerDepartment();
+		return employessPerDpt;
+	}
+	
 	
 	/*
 	@RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)

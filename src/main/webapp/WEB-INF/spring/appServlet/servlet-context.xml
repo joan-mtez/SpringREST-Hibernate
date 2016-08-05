@@ -42,7 +42,7 @@
 		<beans:property name="password" value="" />
 	</beans:bean>
 
-	<beans:bean id="hibernate4AnnotatedSessionFactory"
+	<!-- <beans:bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
@@ -50,6 +50,8 @@
 				<beans:value>com.journaldev.spring.model.Person</beans:value>
 				<beans:value>com.journaldev.spring.model.Stock</beans:value>
 				<beans:value>com.journaldev.spring.model.Category</beans:value>
+				<beans:value>com.journaldev.spring.model.EmployeePerDept</beans:value>
+				<beans:value>com.journaldev.spring.model.Department</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -65,7 +67,7 @@
 	
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
+	</beans:bean> -->
 
 	<!-- <beans:bean id="personDAO" class="com.journaldev.spring.dao.impl.PersonDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />

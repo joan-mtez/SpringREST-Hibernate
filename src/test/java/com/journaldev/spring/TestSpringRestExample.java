@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.web.client.RestTemplate;
 
 import com.journaldev.spring.controller.EmpRestURIConstants;
+import com.journaldev.spring.controller.StockCatRestURIConstants;
 import com.journaldev.spring.model.Employee;
 import com.journaldev.spring.model.Person;
+import com.journaldev.spring.model.Stock;
 
 public class TestSpringRestExample {
 
@@ -15,15 +17,17 @@ public class TestSpringRestExample {
 	
 	public static void main(String args[]){
 		
-		testGetDummyEmployee();
+//		testGetDummyEmployee();
+//		System.out.println("*****");
+//		testCreateEmployee();
+//		System.out.println("*****");
+//		testGetEmployee();
+//		System.out.println("*****");
+//		testGetAllEmployee();
+//		System.out.println("*****");
+//		testGetPerson();
 		System.out.println("*****");
-		testCreateEmployee();
-		System.out.println("*****");
-		testGetEmployee();
-		System.out.println("*****");
-		testGetAllEmployee();
-		System.out.println("*****");
-		testGetPerson();
+		testGetAllStocks();
 	}
 
 	private static void testGetAllEmployee() {
@@ -34,6 +38,17 @@ public class TestSpringRestExample {
 		System.out.println(emps.size());
 		for(LinkedHashMap map : emps){
 			System.out.println("ID="+map.get("id")+",Name="+map.get("name")+",CreatedDate="+map.get("createdDate"));;
+		}
+	}
+	
+	private static void testGetAllStocks() {
+		RestTemplate restTemplate = new RestTemplate();
+		//we can't get List<Employee> because JSON convertor doesn't know the type of
+		//object in the list and hence convert it to default JSON object type LinkedHashMap
+		List<LinkedHashMap> emps = restTemplate.getForObject(SERVER_URI+StockCatRestURIConstants.GET_ALL_STOCKS, List.class);
+		System.out.println(emps.size());
+		for(LinkedHashMap stock : emps){
+			System.out.println("Stock "+stock.get("stockId")+" Name: "+stock.get("stockCode"));;
 		}
 	}
 	private static void testGetPerson() {
